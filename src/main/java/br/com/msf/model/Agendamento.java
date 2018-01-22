@@ -35,11 +35,11 @@ public class Agendamento {
 	
     @NotNull
     @Column(name="VALOR")
-	public float valor;
+	public Float valor;
 
     @NotNull
     @Column(name="TAXA")
-	public float taxa;
+	public Float taxa;
 
     @NotNull
     @Column(name="DATA_TRANSFERENCIA")
@@ -75,11 +75,11 @@ public class Agendamento {
 		this.contaDestino = contaDestino;
 	}
 
-	public float getValor() {
+	public Float getValor() {
 		return valor;
 	}
 
-	public void setValor(float valor) {
+	public void setValor(Float valor) {
 		this.valor = valor;
 	}
 
@@ -99,11 +99,11 @@ public class Agendamento {
 		this.dataAgendamento = dataAgendamento;
 	}
 
-	public float getTaxa() {
+	public Float getTaxa() {
 		return taxa;
 	}
 
-	public void setTaxa(float taxa) {
+	public void setTaxa(Float taxa) {
 		this.taxa = taxa;
 	}
 }

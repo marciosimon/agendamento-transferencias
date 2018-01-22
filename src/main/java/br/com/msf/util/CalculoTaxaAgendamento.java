@@ -22,7 +22,11 @@ public class CalculoTaxaAgendamento {
 	public static float calcularTaxaTransferencia(LocalDate dataAgendamento, LocalDate dataTransferencia, float valor) throws CalculoTaxaAgendamentoException {
 		float valorTaxa = 0;
 		
-		int diasEntreDataAgendamentoEDataTransferencia = DateUtil.quantidadeDiasEntreDatas(dataAgendamento, dataTransferencia);
+		long diasEntreDataAgendamentoEDataTransferencia = DateUtil.quantidadeDiasEntreDatas(dataAgendamento, dataTransferencia);
+		
+		if (diasEntreDataAgendamentoEDataTransferencia < 0) {
+			throw new CalculoTaxaAgendamentoException();
+		}
 
 		if (diasEntreDataAgendamentoEDataTransferencia == 0) {
 			// Transferências no mesmo dia do agendamento tem uma taxa de $3 mais 3% do valor a ser transferido

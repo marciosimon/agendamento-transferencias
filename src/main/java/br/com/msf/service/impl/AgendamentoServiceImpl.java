@@ -1,5 +1,6 @@
 package br.com.msf.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,10 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 
 	@Override
 	public void salvar(Agendamento agendamento) throws CalculoTaxaAgendamentoException {
+		if (agendamento.getId() == null) {
+			agendamento.setDataAgendamento(LocalDate.now());
+		}
+
 		// calculo taxa transferencia
 		float taxaTransferencia = CalculoTaxaAgendamento.calcularTaxaTransferencia(agendamento.getDataAgendamento(), agendamento.getDataTransferencia(), agendamento.getValor());
 		agendamento.setTaxa(taxaTransferencia);
@@ -44,5 +49,9 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 	@Override
 	public void deletar(Agendamento agendamento) {
 		agendamentoRepository.delete(agendamento);
+	}
+
+	public void setAgendamentoRepository(AgendamentoRepository agendamentoRepository) {
+		this.agendamentoRepository = agendamentoRepository;
 	}
 }

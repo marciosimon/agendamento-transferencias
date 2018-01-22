@@ -52,6 +52,7 @@ public class AgendamentoController {
 		Agendamento agendamento;
 		if (id == null) {
 			agendamento = new Agendamento();
+			agendamento.setDataAgendamento(LocalDate.now());
 		} else {
 			agendamento = agendamentoService.pesquisaPorId(id);
 		}
@@ -64,7 +65,6 @@ public class AgendamentoController {
 	public ModelAndView loadForm(ModelMap model) {
 		Agendamento agendamento = new Agendamento();
 		agendamento.setDataAgendamento(LocalDate.now());
-
 		model.addAttribute("agendamento",agendamento);
 		model.addAttribute("contas", contaService.listar());
 		return new ModelAndView("/agendamento/form", model);
@@ -80,10 +80,6 @@ public class AgendamentoController {
 
 			return new ModelAndView("/agendamento/form", model);
 		} else {
-			if(agendamento.getId() == null) {
-				agendamento.setDataAgendamento(LocalDate.now());
-			}
-
 			try {
 				agendamentoService.salvar(agendamento);
 			} catch (CalculoTaxaAgendamentoException e) {

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 
 public class LocalDateConverter implements Converter<String, LocalDate>{
 

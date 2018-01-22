@@ -35,7 +35,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 		</dependency>
-
 		<!-- Para que o tomcat acesse as paginas jsp -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
